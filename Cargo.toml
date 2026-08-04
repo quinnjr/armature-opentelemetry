@@ -1,18 +1,18 @@
 [package]
 name = "armature-opentelemetry"
 version = "0.3.0"
-edition.workspace = true
-rust-version.workspace = true
-authors.workspace = true
-license.workspace = true
+edition = "2024"
+rust-version = "1.94.1"
+authors = ["Joseph Quinn <quinn.josephr@proton.me>"]
+license = "Apache-2.0"
 repository = "https://github.com/quinnjr/armature-opentelemetry"
-homepage.workspace = true
+homepage = "https://quinnjr.github.io/armature"
 description = "OpenTelemetry integration for Armature observability"
 keywords = ["opentelemetry", "tracing", "metrics", "observability"]
 categories = ["development-tools::profiling", "web-programming"]
 
 [dependencies]
-armature-core = { path = "../armature-core", version = "0" }
+armature-core = { version = "0" }
 
 # OpenTelemetry core (all versions must match)
 opentelemetry = "0.32"
