@@ -9,6 +9,10 @@ Earlier changes are recorded in the workspace [`CHANGELOG.md`](../CHANGELOG.md).
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped `tokio` to `1.53` and dev-dependency `serial_test` to `4`; no API changes required in this crate (the `#[serial_test::serial]` attribute path is unaffected). `opentelemetry`, `opentelemetry_sdk`, `opentelemetry-otlp`, `opentelemetry-zipkin`, and `opentelemetry-semantic-conventions` remain aligned on the `0.32` line — verified with `cargo tree -d` that no duplicate `opentelemetry*` versions are pulled in.
+
 ### Fixed
 
 - **Breaking:** span and metric attributes use stable semantic conventions (`http.request.method`, `url.path`, `http.response.status_code`); dashboards keyed on the retired pre-1.0 names need updating.
