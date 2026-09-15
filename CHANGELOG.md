@@ -9,28 +9,12 @@ Earlier changes are recorded in the workspace [`CHANGELOG.md`](../CHANGELOG.md).
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-09-15
+
 ### Changed
 
+- **Breaking:** requires `armature-core` 0.10 (was `0.9`); its types appear in this crate's API, so the requirement change is breaking here and the minor moves. Part of the `armature-core` 0.10 release train.
 - Bumped `tokio` to `1.53` and dev-dependency `serial_test` to `4`; no API changes required in this crate (the `#[serial_test::serial]` attribute path is unaffected). `opentelemetry`, `opentelemetry_sdk`, `opentelemetry-otlp`, `opentelemetry-zipkin`, and `opentelemetry-semantic-conventions` remain aligned on the `0.32` line — verified with `cargo tree -d` that no duplicate `opentelemetry*` versions are pulled in.
-
-### Fixed
-
-- **Breaking:** span and metric attributes use stable semantic conventions (`http.request.method`, `url.path`, `http.response.status_code`); dashboards keyed on the retired pre-1.0 names need updating.
-- `http.route` no longer carries the raw target. Every distinct URL — query string included — minted a new metric time series, which is unbounded cardinality on a low-cardinality attribute.
-
-### Fixed
-
-- `http.route` is the query-less path rather than the raw request target. OTel defines `http.route` as a low-cardinality route template, so every distinct URL was minting its own time series.
-
-### Changed
-
-- **Breaking (telemetry):** span and metric attributes use the stable OTel HTTP semantic conventions instead of the retired pre-1.0 names: `http.method` → `http.request.method`, `http.target` → `url.path`, `http.status_code` → `http.response.status_code`, `http.scheme` → `url.scheme`, `http.host` → `server.address`, `http.user_agent` → `user_agent.original`, `http.response_content_length` → `http.response.body.size`. Dashboards and alerts keyed on the old names must be updated.
-- Span names use the query-less path, for the same cardinality reason.
-
-### Changed — `0.2.0` → `0.2.1`
-
-- Migrated onto `armature-core` `0.8`'s `Bytes`-backed request and response types. No behavior change beyond what that migration implies; see [`armature-core/CHANGELOG.md`](../armature-core/CHANGELOG.md).
-- `http.method` and `http.target` are read through the request's new accessors; `http.target` now carries the query string, which it previously dropped.
 
 ## [0.4.0] - 2026-08-05
 
