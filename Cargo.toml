@@ -1,6 +1,6 @@
 [package]
 name = "armature-opentelemetry"
-version = "0.5.0"
+version = "0.6.0"
 edition = "2024"
 rust-version = "1.94.1"
 authors = ["Joseph Quinn <quinn.josephr@proton.me>"]
@@ -12,7 +12,7 @@ keywords = ["opentelemetry", "tracing", "metrics", "observability"]
 categories = ["development-tools::profiling", "web-programming"]
 
 [dependencies]
-armature-core = { version = "0.10" }
+armature-core = { version = "0.11" }
 
 # OpenTelemetry core (all versions must match)
 opentelemetry = "0.32"
@@ -27,7 +27,8 @@ opentelemetry-otlp = { version = "0.32", features = ["grpc-tonic", "trace", "met
 # See: https://github.com/open-telemetry/opentelemetry-rust/tree/main/opentelemetry-otlp
 
 # Zipkin exporter
-opentelemetry-zipkin = { version = "0.32", features = ["reqwest-client"], optional = true }
+# default-features off: the zipkin defaults enable reqwest/native-tls (OpenSSL).
+opentelemetry-zipkin = { version = "0.32", default-features = false, features = ["reqwest-client", "reqwest-rustls"], optional = true }
 
 # Async runtime
 tokio = { version = "1.53", features = ["rt", "rt-multi-thread", "macros", "sync", "time"] }
