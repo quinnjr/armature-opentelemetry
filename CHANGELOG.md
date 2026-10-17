@@ -9,6 +9,8 @@ Earlier changes are recorded in the workspace [`CHANGELOG.md`](../CHANGELOG.md).
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-10-17
+
 ### Changed
 
 - The `zipkin` exporter no longer enables `opentelemetry-zipkin`'s default features, which pulled in reqwest's native-tls (OpenSSL); it now uses rustls.
