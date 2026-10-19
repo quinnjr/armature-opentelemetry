@@ -16,7 +16,7 @@ armature-core = { version = "0.11" }
 
 # OpenTelemetry core (all versions must match)
 opentelemetry = "0.32"
-opentelemetry_sdk = { version = "0.32", features = ["rt-tokio"] }
+opentelemetry_sdk = { version = "0.33", features = ["rt-tokio"] }
 opentelemetry-semantic-conventions = "0.32"
 
 # Tracing - OTLP is the primary and recommended exporter
@@ -50,7 +50,7 @@ cargo-husky = { version = "1.5", default-features = false, features = ["user-hoo
 # `testing` unlocks the in-memory metric/span exporters used by the
 # middleware's end-to-end recording tests (feature-unified with the runtime
 # deps).
-opentelemetry_sdk = { version = "0.32", features = ["rt-tokio", "testing"] }
+opentelemetry_sdk = { version = "0.33", features = ["rt-tokio", "testing"] }
 # Tests that mutate the process-global OpenTelemetry tracer provider
 # (`opentelemetry::global::set_tracer_provider`) must not run concurrently
 # with each other, or one test's provider swap can leak into another's
