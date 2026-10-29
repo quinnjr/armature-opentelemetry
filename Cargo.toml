@@ -20,7 +20,7 @@ opentelemetry_sdk = { version = "0.32", features = ["rt-tokio"] }
 opentelemetry-semantic-conventions = "0.32"
 
 # Tracing - OTLP is the primary and recommended exporter
-opentelemetry-otlp = { version = "0.32", features = ["grpc-tonic", "trace", "metrics"], optional = true }
+opentelemetry-otlp = { version = "0.33", features = ["grpc-tonic", "trace", "metrics"], optional = true }
 
 # Note: opentelemetry-jaeger and opentelemetry-prometheus are discontinued
 # and not compatible with opentelemetry 0.31. Use OTLP instead.
